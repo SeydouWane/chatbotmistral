@@ -56,7 +56,7 @@ def ask_force_n_bot(message, context_text):
         print("[Erreur chatbot]", e)
         return "Une erreur est survenue, merci de reformuler votre question."
 
-@app.route("/chat", methods=["POST"])
+@app.route("/chat", methods=["GET", "POST"])
 def chat():
     data = request.json
     user_message = data.get("message")
