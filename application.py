@@ -14,7 +14,7 @@ if not HF_TOKEN:
 
 # Client HF
 client = InferenceClient(
-    model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+    model="tiiuae/falcon-rw-1b",
     token=HF_TOKEN
 )
 
@@ -57,14 +57,14 @@ def chat():
     try:
         response = client.text_generation(
             prompt=prompt,
-            max_new_tokens=300,
+            max_new_tokens=100,
             temperature=0.7,
             top_p=0.95,
             do_sample=True,
         )
         return jsonify({"response": response})
     except Exception as e:
-        print("[Erreur chatbot]", e)
+        print("[Erreur chatbot]", e, flush=True)
         return jsonify({"response": "Une erreur est survenue, merci de reformuler votre question."})
 
 @app.route("/")
