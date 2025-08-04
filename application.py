@@ -29,6 +29,7 @@ INSCRIPTION_URL = "https://forcen.jotform.com/form/231154488427359"
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
+    return data
     if not data or "message" not in data:
         return jsonify({"error": "Message manquant"}), 400
 
@@ -73,4 +74,4 @@ def home():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(port=port)
